@@ -6,13 +6,13 @@ import pickle
 app = Flask(__name__)
 
 # Load the trained model
-# model = pickle.load(open('rf_Model.pkl', 'rb'))
-#df = pickle.load(open('df.pkl', 'rb'))
+model = pickle.load(open('rf_Model.pkl', 'rb'))
+df = pickle.load(open('df.pkl', 'rb'))
 
 import pickle
 
-#with open('label_encoders.pkl', 'rb') as le_file:
-   # label_encoders = pickle.load(le_file)
+with open('label_encoders.pkl', 'rb') as le_file:
+   label_encoders = pickle.load(le_file)
 
 
 @app.route('/')
