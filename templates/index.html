@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+    position: relative;
+    left: -22pc;
+    background-color: #111;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("{{ url_for('static', filename='images/7.jpeg') }}");
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+    width: 40%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 1000;
+    font-style: italic;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 30px;
+    color: #000000; 
+}
+
+form {
+    background-color: rgba(0, 0, 0, 0.998); 
+    padding: 20px;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    font-size: 20px;
+    font-weight: 1000;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+select,
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333; /* Dark gray */
+    color: #fff;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00ff00; /* Neon Green */
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #007700; /* Darker green on hover */
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Car Price Prediction</h1>
+        <form action="/predict" method="POST">
+            <label for="car_name">Car Name:</label>
+            <select name="car_name" required>
+                {% for car_name in car_name_values %}
+                <option value="{{ car_name }}">{{ car_name }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="car_model">Car Model:</label>
+            <select name="car_model" required>
+                {% for car_model in car_model_values %}
+                <option value="{{ car_model }}">{{ car_model }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="owner">Owner:</label>
+            <select name="owner" required>
+                {% for owner in owner_values %}
+                <option value="{{ owner }}">{{ owner }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="fuel_type">Fuel Type:</label>
+            <select name="fuel_type" required>
+                {% for fuel_type in fuel_type_values %}
+                <option value="{{ fuel_type }}">{{ fuel_type }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="mileage">Mileage:</label>
+            <input type="number" name="mileage" required><br>
+
+            <label for="year">Year:</label>
+            <input type="number" name="year" required><br>
+
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+</body>
+
+</html>
